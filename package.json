@@ -1,0 +1,27 @@
+{
+  "name": "hugo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "npx tailwindcss build src/styles.css -o public/styles.css",
+    "build-css-prod": "cross-env NODE_ENV=production npx tailwindcss build src/styles.css -o public/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToastedWaffle/hugo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ToastedWaffle/hugo/issues"
+  },
+  "homepage": "https://github.com/ToastedWaffle/hugo#readme",
+  "dependencies": {
+    "autoprefixer": "^10.1.0",
+    "cross-env": "^7.0.3",
+    "purgecss": "^3.1.3",
+    "tailwindcss": "^2.0.2"
+  }
+}

@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;1,400&family=Pacifico&display=swap');
+
+@tailwind base;
+@tailwind components;
+
+.btn{
+    @apply block rounded-full bg-primary text-secondary px-10 py-2 text-base;
+}
+
+@tailwind utilities;

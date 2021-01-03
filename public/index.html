@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background text-primary font-body">
+    <div class="w-screen h-screen grid grid-cols-1 m-auto md:grid-cols-2 md:w-5/6 lg:w-4/6"> <!-- header -->
+        <div class="p-3 md:p-7 flex">
+            <div class="m-auto md:mb-14">
+                <h1 class="font-header text-9xl">Hugo</h1>
+                <p class="mt-14 text-2xl">Your free hug <br> sending service!</p>
+                <button class="btn send-hug-btn mx-auto md:mx-0 mt-16 text-lg"> Send a hug <img class="inline-block ml-2" src="img/heart-icon.svg" alt="heart icon"></button>
+                <button class="btn absolute bottom-4 left-1/2 transform -translate-x-1/2 md:hidden bg-secondary text-primary px-7 py-2 mt-16 shadow-md"><a href="#content"> Learn more <svg class="w-4 inline-block ml-3" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14 fa-9x"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" class=""></path></svg></a></button>
+            </div>
+        </div>
+        <div class="flex flex-row items-end md:pb-7">
+            <img class="mx-auto md:w-11/12 md:mb-14" src="img/In love-pana.svg" alt="love-pana">             
+        </div>
+
+        <div class="hidden md:block col-span-2 text-center text-lg"><a href="#content">Learn more <svg class="w-4 inline-block ml-3" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14 fa-9x"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" class=""></path></svg></a></div>
+    </div> <!-- header end -->
+    
+    <div id="content" class="mx-10 my-20 text-lg sm:mx-20 md:mx-36 lg:mx-44 xl:mx-56 2xl:mx-96">  <!-- content -->
+        <div class="grid grid-cols-1 gap-20 md:grid-cols-2 md:grid-rows-3 md:gap-10">
+            <div>
+                <h1 class="font-header text-center text-5xl mb-10">The idea</h1>
+                <p>
+                    Sending a hug miles away is a hard task, but our service is here to help you!
+                    <br><br>
+                    With Hugo you can send a hug, that your loved ones will
+                </p>
+                <p class="text-center mt-3 italic">really feel.</p>
+                <img src="img/heart-icon2.svg" alt="heart icon" class="mx-auto">
+            </div>
+            <div>
+                <h1 class="font-header text-center text-5xl mb-10">Really feel?</h1>
+                <p>
+                    Yes, exactly!
+                    <br><br>
+                    When you play our hugs, they vibrate the phone in your special pattern. So your dear ones can place it on their chest, to feel your act of kindness.
+                </p>
+            </div>
+            <p class="text-center mt-10 text-xl md:col-span-2">
+                In just 3 steps <br>
+                you can send your own hug!
+            </p>
+            <div>
+                <h1 class="font-header text-5xl mb-5">Step 1</h1>
+                <p class="mb-10">Record your hug pattern using our editor.</p>
+                <img src="img/editor.png" alt="editor image" class="mx-auto w-9/12 md:w-4/12">
+            </div>
+            <div>
+                <h1 class="font-header text-5xl mb-5">Step 2</h1>
+                <p class="mb-10">
+                    Send the hug to your loved ones.
+                    <br>
+                    They will be able to play it <b>up to 3 times.</b>
+                </p>
+                <img src="img/sent message-pana.svg" alt="send message image" class="mx-auto w-9/12 md:w-4/12">
+            </div>
+            <div>
+                <h1 class="font-header text-5xl mb-5">Step 3</h1>
+                <p class="mb-10">
+                    This step is for the other person.
+                    <br>
+                    All you have to do is press the play button and put your phone on your chest.
+                </p>
+                <img src="img/phone.png" alt="phone image" class="mx-auto w-9/12 md:w-4/12">
+            </div>
+            <div class="md:my-auto">
+                <div>
+                    <h1 class="font-header text-center text-4xl mb-3">Easy as that!</h1>
+                    <p class="mb-10 text-center">
+                        So what are you waiting for?
+                    </p>
+                    <button class="btn send-hug-btn mx-auto text-lg"> Send a hug <img class="inline-block ml-2" src="img/heart-icon.svg" alt="heart icon"></button>
+                </div>
+            </div>
+        </div>
+    </div>  <!-- content end -->    
+    <div class="bg-primary text-secondary p-10 pb-12 lg:px-36">   <!-- footer -->
+        <p class="text-center md:float-left">This website was made for the <a class="underline" href="https://dev.to/devteam/announcing-the-digitalocean-app-platform-hackathon-on-dev-2i1k">2020 DEV Hackathon</a></p>
+        <div class="text-center md:float-right mt-5 md:mt-0 font-medium">
+            <span class="text-center mr-5"><a href="">More info</a></span>
+            <span class="text-center md:mx-5"><a href="">Resources</a></span>
+            <span class="text-center block mt-2 md:mt-0 md:inline-block">© 2020 Hugo</span>
+        </div>
+    </div>  <!-- footer end -->
+</body>
+</html>
