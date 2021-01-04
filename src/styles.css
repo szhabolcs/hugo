@@ -6,5 +6,38 @@
 .btn{
     @apply block rounded-full bg-primary text-secondary px-10 py-2 text-base;
 }
+#sender:empty:focus {
+    display: inline-block;
+    min-width: 85px;
+}
+#sender[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #8A606F;
+}
 
+#sender[placeholder]:empty:focus:before {
+    content: "";
+}
+
+.border-b-tight{
+    background: transparent linear-gradient(90deg, #162A40,#162A40) no-repeat 0 85%;
+    background-size: 100% 3px;
+}
+
+.pattern-item{
+    @apply bg-secondary p-3 rounded-md w-12 h-12 shadow-lg mx-auto;
+}
+.pattern-item > img{
+    @apply mx-auto;
+}
+
+#hug-editor-parent{
+    width: 300px
+}
+/* Fix for the editor screen on really small screens */
+@media only screen and (max-width: 327px) {
+    #hug-editor-parent {
+        margin-left: -0.6rem;
+    }
+}
 @tailwind utilities;

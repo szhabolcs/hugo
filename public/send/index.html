@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo - Send a hug</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="bg-background text-primary font-body lg:grid lg:h-screen lg:grid-cols-1 lg:content-center">
+    <div id="content" class="mx-5 mt-5 my-20 text-lg sm:mx-20 md:mx-36 lg:my-0 lg:mx-44 xl:mx-56 2xl:mx-96">  <!-- content -->
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            <div class="my-auto lg:max-w-sm">
+                <h1 class="font-header text-9xl mb-20 hidden lg:block">Hugo</h1>
+                <h1 class="font-header text-5xl mb-5 leading-normal">
+                    This hug is from <span id="sender" class="border-b-tight" contenteditable="true" placeholder="a dear someone"></span>
+                </h1>
+                <button class="btn text-xl mt-16 mx-auto hidden lg:block">Preview</button>
+            </div>
+            <div class="m-auto">
+                <p class="text-center text-xl mb-5">With this pattern:</p>
+                <div id="hug-editor-parent" class="mx-auto">
+                    <div id="hug-editor" class="grid grid-cols-1 border-solid border-primary border-4 rounded-md overflow-hidden">
+                        <div id="pattern" class="grid grid-cols-4 gap-5 p-8">
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                            <button class="pattern-item"><img src="../img/pause-icon.svg" alt="pause icon"></button>
+                        </div>
+                        <div id="controls" class="bg-primary p-2" style="padding-top: calc(0.5rem + 4px);">
+                            <button id="play" class="btn bg-secondary inline-block p-3 float-right"><img src="../img/play-icon.svg" alt="play icon"></button>
+                            <button id="stop" class="btn bg-secondary inline-block p-3 float-right mr-3"><img src="../img/stop-icon.svg" alt="stop icon"></button>
+                            <button id="clear" class="btn bg-secondary inline-block p-3 float-left mr-3" style="width:35px;"><img src="../img/clear-icon.svg" alt="clear icon"></button>
+                            <button id="view" class="btn bg-secondary inline-block px-3 text-primary float-left" style="padding-top:0.4rem;padding-bottom:0.4rem;">
+                                <span class="mr-1">4x4</span>
+                                <img class="inline-block w-4" src="../img/view-icon.svg" alt="view icon">
+                            </button>
+                        </div>
+                    </div>
+                    <label class="flex justify-start items-start mt-3">
+                        <div class="bg-white border-4 rounded border-primary w-7 h-7 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
+                        <input type="checkbox" class="opacity-0 absolute">
+                        <svg class="fill-current hidden w-4 h-4 text-primary pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                        </div>
+                        <div class="select-none">Play sound instead of vibrating</div>
+                    </label>
+                </div>
+                <button class="btn text-xl mt-8 mx-auto lg:hidden">Preview</button>
+            </div>
+        </div>
+    </div>  <!-- content end-->
+    <style>
+        input:checked + svg {
+            display: block;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="send.js"></script>
+</body>
+</html>

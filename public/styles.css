@@ -597,6 +597,55 @@ video {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
+#sender:empty:focus {
+  display: inline-block;
+  min-width: 85px;
+}
+
+#sender[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #8A606F;
+}
+
+#sender[placeholder]:empty:focus:before {
+  content: "";
+}
+
+.border-b-tight{
+  background: transparent linear-gradient(90deg, #162A40,#162A40) no-repeat 0 85%;
+  background-size: 100% 3px;
+}
+
+.pattern-item{
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  border-radius: 0.375rem;
+  height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.75rem;
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  width: 3rem;
+}
+
+.pattern-item > img{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hug-editor-parent{
+  width: 300px
+}
+
+/* Fix for the editor screen on really small screens */
+
+@media only screen and (max-width: 327px) {
+  #hug-editor-parent {
+    margin-left: -0.6rem;
+  }
+}
+
 .space-y-0 > :not([hidden]) ~ :not([hidden]){
   --tw-space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
