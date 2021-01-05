@@ -2,7 +2,7 @@ module.exports = {
   purge: {
     content: ['./public/**/*.html'],
     options: {
-      safelist: ["grid-cols-3"]
+      safelist: ["grid-cols-3","animate-ping"]
     }
   },
   darkMode: false, // or 'media' or 'class'

@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="bg-background text-primary font-body lg:grid lg:h-screen lg:grid-cols-1 lg:content-center">
+    <div id="preview-parent" class="hidden w-screen h-full text-9xl fixed top-0 bg-background grid-cols-1 items-end">
+        <div id="load-preview">
+
+        </div>
+        <div class="bg-primary text-center h-20 p-4 w-screen flex items-center">
+            <div class="flex flex-row justify-around max-w-sm mx-auto">
+                <button id="back-btn" class="btn bg-secondary text-primary mr-7">Back</button>
+                <button id="send-btn" class="btn bg-secondary text-primary">Send</button>
+            </div>
+        </div>
+    </div>
     <div id="content" class="mx-5 mt-5 my-20 text-lg sm:mx-20 md:mx-36 lg:my-0 lg:mx-44 xl:mx-56 2xl:mx-96">  <!-- content -->
         <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
             <div class="my-auto lg:max-w-sm">
@@ -14,7 +25,7 @@
                 <h1 class="font-header text-5xl mb-5 leading-normal">
                     This hug is from <span id="sender" class="border-b-tight" contenteditable="true" placeholder="a dear someone"></span>
                 </h1>
-                <button class="btn text-xl mt-16 mx-auto hidden lg:block">Preview</button>
+                <button class="preview btn text-xl mt-16 mx-auto hidden lg:block">Preview</button>
             </div>
             <div class="m-auto">
                 <p class="text-center text-xl mb-5">With this pattern:</p>
@@ -41,7 +52,7 @@
                         <div class="select-none">Play sound instead of vibrating</div>
                     </label>
                 </div>
-                <button class="btn text-xl mt-8 mx-auto lg:hidden">Preview</button>
+                <button class="preview btn text-xl mt-8 mx-auto lg:hidden">Preview</button>
             </div>
         </div>
     </div>  <!-- content end-->

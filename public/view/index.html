@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="bg-background text-primary font-body lg:grid lg:h-screen lg:grid-cols-1 lg:content-center">
+    <div id="timer" class="hidden w-screen h-screen text-9xl fixed top-0 flex flex-row justify-center items-center bg-black bg-opacity-40 text-secondary">
+        <span>1</span>
+    </div>
     <div id="content" class="mx-5 mt-5 my-20 text-lg sm:mx-20 md:mx-36 lg:my-0 lg:mx-44 xl:mx-56 2xl:mx-96">  <!-- content -->
         <div class="grid grid-cols-1 gap-5">
             <div class="m-auto">
                 <h1 class="font-header text-5xl mb-5 leading-normal">
-                    This hug is from <span id="sender">a dear someone</span>
+                    This hug is from <span id="sender-name">a dear someone</span>
                 </h1>
             </div>
             <div class="m-auto max-w-sm">
@@ -22,7 +25,7 @@
                     <img src="../img/heart-icon2.svg" alt="heart icon" class="mx-auto mb-10 mt-3">
                 </p>
                 <p id="plays-left" class="text-center">3 plays left</p>
-                <button class="btn text-xl mt-4 mx-auto">Play hug <img class="inline-block ml-2" src="../img/heart-icon.svg" alt="heart icon"></button>
+                <button id="play-hug" class="btn text-xl mt-4 mx-auto">Play hug <img class="inline-block ml-2" src="../img/heart-icon.svg" alt="heart icon"></button>
                 <label class="flex justify-center items-start mt-5">
                     <div class="bg-white border-4 rounded border-primary w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-primary">
                     <input type="checkbox" class="opacity-0 absolute">

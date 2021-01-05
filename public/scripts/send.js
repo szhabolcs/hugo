@@ -7,6 +7,7 @@ $(document).ready(function(){
     var patternDIV = $("#pattern");
     var view = "3";
     var pattern = [];
+    var sender = "a dear someone";
 
     //Functions
     
@@ -134,7 +135,17 @@ $(document).ready(function(){
      */
     async function runSequence(sequence) {
         //Wait before execution
-        await delay(2000);
+        if($("#preview-parent").css("display") == "grid"){
+            $("#timer span").text("1");
+            $("#timer").removeClass("hidden");
+            $("#timer span").addClass("animate-ping").removeClass("hidden");
+            await delay(980);
+            $("#timer span").text("2");
+            await delay(980);
+            $("#timer span").text("3");
+            await delay(1000);
+            $("#timer span").removeClass("animate-ping").addClass("hidden");
+        }
 
         for (const item of sequence) {
             if(item.type == 1){
@@ -142,6 +153,7 @@ $(document).ready(function(){
             }
             await delay(200*item.number);
         }
+        $("#timer").addClass("hidden");
     }
 
     /**
@@ -156,10 +168,52 @@ $(document).ready(function(){
         }
     }
 
+    /**
+     * Executes the preview function
+     */
+    function preview(){
+        $("#preview-parent").css("display","grid");
+        if($.trim($("#load-preview").html())==''){
+            $("#load-preview").load("../view/index.html",()=>{
+                if(sender != ""){
+                $("#sender-name").text(sender);
+            }
+            });
+        }
+
+        if(sender != "")
+            $("#sender-name").text(sender);
+    }
+
+    /**
+     * Closes the preview
+     */
+    function back(){
+        $("#preview-parent").css("display","none");
+    }
+
+    /**
+     * Sends the hug to the server
+     */
+    function send(){
+        alert("soon :)");
+    }
+    /**
+     * Changes the name in memory
+     */
+    function changeName(){
+        sender = $(this).text();
+    }
+
     //Listeners
     $("#view").click(changeView);
     $("#clear").click(clearPattern);
     $("#play").click(play);
     $("#stop").click(stop);
+    $(".preview").click(preview);
+    $("#back-btn").click(back);
+    $("#send-btn").click(send);
+    $("body").on("click","#play-hug", play);
+    $('body').on('focus', '[contenteditable]', changeName).on('blur keyup paste input', '[contenteditable]', changeName);
     $("#pattern").on("click",".pattern-item",changeType);
 });
