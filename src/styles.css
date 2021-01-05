@@ -24,6 +24,9 @@
     background-size: 100% 3px;
 }
 
+#pattern{
+    height: 316px;
+}
 .pattern-item{
     @apply bg-secondary p-3 rounded-md w-12 h-12 shadow-lg mx-auto;
 }
@@ -32,12 +35,12 @@
 }
 
 #hug-editor-parent{
-    width: 300px
+    width: 320px
 }
 /* Fix for the editor screen on really small screens */
 @media only screen and (max-width: 327px) {
     #hug-editor-parent {
-        margin-left: -0.6rem;
+        margin-left: -1.2rem;
     }
 }
 @tailwind utilities;
