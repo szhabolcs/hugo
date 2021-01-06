@@ -72,8 +72,12 @@ $(document).ready(function(){
             await $.ajax(settings).done(function (response) {
                 plays = response.plays;
                 $("#plays-left").text(plays == 3 ? "You can't play the hug anymore." : 3-plays + " plays left");
+                if(plays == 3) $("#play-hug").html(`Send a new hug <img class="inline-block ml-2" src="../img/heart-icon.svg" alt="heart icon">`);
             });
             runSequence(vibrationPattern);
+        }
+        else if(plays == 3){
+            window.open("https://hugo-ptrq2.ondigitalocean.app/send","_self");
         }
     }
 

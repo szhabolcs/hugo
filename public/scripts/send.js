@@ -250,10 +250,10 @@ $(document).ready(function(){
             navigator.share({
                 title: "Sharing your hug",
                 text: "Then come back and send another!",
-                url: `https://hugo-ptrq2.ondigitalocean.app/view?id=${response.id}`
+                url: `https://hugo-ptrq2.ondigitalocean.app/view?id=${$("#link").text()}`
               });
         } else {
-            copyToClipboard(`https://hugo-ptrq2.ondigitalocean.app/view?id=${response.id}`);
+            copyToClipboard(`https://hugo-ptrq2.ondigitalocean.app/view?id=${$("#link").text()}`);
         }
     }
     
