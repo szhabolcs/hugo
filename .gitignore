@@ -1,2 +1,3 @@
 node_modules
 original-tailwind.config.js
+/.env
