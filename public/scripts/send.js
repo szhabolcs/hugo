@@ -235,7 +235,7 @@ $(document).ready(function(){
      * @param {String} text text to copy
      */
     function copyToClipboard(text) {
-        var $temp = $("<input>").hidden();
+        var $temp = $("<input>").hide();
         $("body").append($temp);
         $temp.val(text).select();
         document.execCommand("copy");
