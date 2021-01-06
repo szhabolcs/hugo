@@ -250,10 +250,10 @@ $(document).ready(function(){
             navigator.share({
                 title: "Sharing your hug",
                 text: "",
-                url: `https://hugo-ptrq2.ondigitalocean.app/view?id=${$("#link").text()}`
+                url: $("#link").text()
               });
         } else {
-            copyToClipboard(`https://hugo-ptrq2.ondigitalocean.app/view?id=${$("#link").text()}`);
+            copyToClipboard($("#link").text());
         }
     }
     
