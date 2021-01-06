@@ -249,7 +249,7 @@ $(document).ready(function(){
         if (navigator.share) {
             navigator.share({
                 title: "Sharing your hug",
-                text: "Then come back and send another!",
+                text: "",
                 url: `https://hugo-ptrq2.ondigitalocean.app/view?id=${$("#link").text()}`
               });
         } else {
