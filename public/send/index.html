@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="bg-background text-primary font-body lg:grid lg:h-screen lg:grid-cols-1 lg:content-center">
+    <div id="link-parent" class="hidden p-2 z-10 w-screen h-screen text-xl fixed top-0 flex-row justify-center items-center bg-background">
+        <div class="text-center">
+            <p class="font-header text-5xl leading-normal">Your hug is ready!</p>
+            <p class="mt-10">Share it with someone special <img src="../img/heart-icon2.svg" alt="heart icon" class="inline-block ml-2 w-5"></p>
+            <p class="mt-14">Here's your link:</p>
+            <p id="link"></p>
+            <button class="btn back-btn inline-block mt-7 bg-secondary text-primary">Back</button>
+            <button class="btn inline-block mt-7 ml-2" id="share-btn">Share</button>
+        </div>
+    </div> 
     <div id="preview-parent" class="hidden w-screen h-full text-9xl fixed top-0 bg-background grid-cols-1 items-end overflow-auto">
         <div id="load-preview">
 
         </div>
         <div class="bg-primary text-center h-20 p-4 w-screen flex items-center">
             <div class="flex flex-row justify-around max-w-sm mx-auto">
-                <button id="back-btn" class="btn bg-secondary text-primary mr-7">Back</button>
+                <button class="btn back-btn bg-secondary text-primary mr-7">Back</button>
                 <button id="send-btn" class="btn bg-secondary text-primary">Send</button>
             </div>
         </div>

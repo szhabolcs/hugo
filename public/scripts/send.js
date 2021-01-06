@@ -100,9 +100,9 @@ $(document).ready(function(){
     }
 
     /**
-     * Creates and starts the vibration sequence
+     * Generates a playable pattern
      */
-    function play(){
+    function generatePattern(){
         let vibrationPattern = [
             {
                 type: pattern[0],
@@ -123,9 +123,18 @@ $(document).ready(function(){
                 vibrationPattern[i].number = 1;
             }
         }
-        console.log(vibrationPattern);
+
+        return vibrationPattern;
+    }
+
+    /**
+     * Creates and starts the vibration sequence
+     */
+    function play(){
+        vibrationPattern = generatePattern();
         runSequence(vibrationPattern);
     }
+
     //Helper function for runSequence
     const delay = ms => new Promise(resolve => {setTimeout(resolve, ms)});
 
@@ -174,7 +183,7 @@ $(document).ready(function(){
     function preview(){
         $("#preview-parent").css("display","grid");
         if($.trim($("#load-preview").html())==''){
-            $("#load-preview").load("../view/index.html",()=>{
+            $("#load-preview").load("../view/dummy.html",()=>{
                 if(sender != ""){
                 $("#sender-name").text(sender);
             }
@@ -190,14 +199,64 @@ $(document).ready(function(){
      */
     function back(){
         $("#preview-parent").css("display","none");
+        $("#link-parent").css("display","none");
     }
 
     /**
      * Sends the hug to the server
      */
     function send(){
-        alert("soon :)");
+        var settings = {
+            "url": "https://hugo-ptrq2.ondigitalocean.app/api/",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "pattern": generatePattern(),
+                "name": sender.length == 0 ? "a dear someone" : sender
+            }),
+          };
+          
+        $.ajax(settings).done(function (response) {
+            // id is response.id
+            $("#link-parent").css("display","flex");
+
+            $("#link").text(`https://hugo-ptrq2.ondigitalocean.app/view?id=${response.id}`);
+    
+            if (!navigator.share)
+                $("#share-btn").text("Copy link");
+        });
     }
+    
+    /**
+     * Copies text to the clipboard
+     * @param {String} text text to copy
+     */
+    function copyToClipboard(text) {
+        var $temp = $("<input>").hidden();
+        $("body").append($temp);
+        $temp.val(text).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+
+    /**
+     * Handles the url sharing
+     */
+    function share(){
+        if (navigator.share) {
+            navigator.share({
+                title: "Sharing your hug",
+                text: "Then come back and send another!",
+                url: `https://hugo-ptrq2.ondigitalocean.app/view?id=${response.id}`
+              });
+        } else {
+            copyToClipboard(`https://hugo-ptrq2.ondigitalocean.app/view?id=${response.id}`);
+        }
+    }
+    
     /**
      * Changes the name in memory
      */
@@ -211,8 +270,9 @@ $(document).ready(function(){
     $("#play").click(play);
     $("#stop").click(stop);
     $(".preview").click(preview);
-    $("#back-btn").click(back);
+    $(".back-btn").click(back);
     $("#send-btn").click(send);
+    $("#share-btn").click(share);
     $("body").on("click","#play-hug", play);
     $('body').on('focus', '[contenteditable]', changeName).on('blur keyup paste input', '[contenteditable]', changeName);
     $("#pattern").on("click",".pattern-item",changeType);
