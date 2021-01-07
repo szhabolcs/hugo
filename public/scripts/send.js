@@ -232,15 +232,15 @@ $(document).ready(function(){
     
     /**
      * Copies text to the clipboard
-     * @param {String} text text to copy
+     * @param {Object} element the element to copy text from
      */
-    function copyToClipboard(text) {
-        var $temp = $("<input>").hide();
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
         $("body").append($temp);
-        $temp.val(text).select();
+        $temp.val($(element).text()).select();
         document.execCommand("copy");
         $temp.remove();
-    }
+      }
 
     /**
      * Handles the url sharing
@@ -253,7 +253,7 @@ $(document).ready(function(){
                 url: $("#link").text()
               });
         } else {
-            copyToClipboard($("#link").text());
+            copyToClipboard("#link");
         }
     }
     

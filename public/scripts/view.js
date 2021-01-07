@@ -72,6 +72,11 @@ $(document).ready(function(){
      * Creates and starts the vibration sequence
      */
     async function play(){
+        if(!window.navigator.vibrate){
+            alert("Vibration is not supported on your device or browser. We are sorry for the inconvenience.");
+            throw new Error("Vibration not supported.");
+        }
+
         var settings = {
             "url": `https://hugo-ptrq2.ondigitalocean.app/api/${id}`,
             "method": "POST"
