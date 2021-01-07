@@ -220,7 +220,7 @@ $(document).ready(function(){
                 await delay(200*item.number);
             }
         }
-
+        await delay(800);
         $("#timer").addClass("hidden");
     }
 
