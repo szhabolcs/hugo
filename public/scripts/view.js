@@ -6,8 +6,13 @@ $(document).ready(function(){
     var plays = 0;
 
     //Check if id parameter exists
-    if(id == null)
-        $("#content").html(`<h1 class="font-header text-5xl text-center">No hug found</h1`);
+    if(id == null){
+        $("body").addClass("grid h-screen grid-cols-1 content-center");
+        $("#content").html(`
+            <h1 class="font-header text-5xl text-center">No hug found</h1>
+            <button id="new-hug-btn" class="btn back-btn mx-auto mt-10 bg-secondary text-primary text-lg" onclick='window.open("https:\/\/hugo-ptrq2.ondigitalocean.app\/send","_self");'>But you can send a new one!</button>
+        `);
+    }
     else{
         fetchPattern();
     }
@@ -26,7 +31,11 @@ $(document).ready(function(){
                 $("#plays-left").text(`${3-plays} plays left`);
             }
             else{
-                $("#content").html(`<h1 class="font-header text-5xl text-center">No hug found</h1`);
+                $("body").addClass("grid h-screen grid-cols-1 content-center");
+                $("#content").html(`
+                    <h1 class="font-header text-5xl text-center">No hug found</h1>
+                    <button id="new-hug-btn" class="btn back-btn mx-auto mt-10 bg-secondary text-primary text-lg" onclick='window.open("https:\/\/hugo-ptrq2.ondigitalocean.app\/send","_self");'>But you can send a new one!</button>
+                `);
             }
         });
     }
@@ -72,7 +81,10 @@ $(document).ready(function(){
             await $.ajax(settings).done(function (response) {
                 plays = response.plays;
                 $("#plays-left").text(plays == 3 ? "You can't play the hug anymore." : 3-plays + " plays left");
-                if(plays == 3) $("#play-hug").html(`Send a new hug <img class="inline-block ml-2" src="../img/heart-icon.svg" alt="heart icon">`);
+                if(plays == 3) {
+                    $("#play-hug").html(`Send a new hug <img class="inline-block ml-2" src="../img/heart-icon.svg" alt="heart icon">`);
+                    $("#new-hug-btn").remove();
+                }
             });
             runSequence(vibrationPattern);
         }
