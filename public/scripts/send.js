@@ -1,6 +1,5 @@
 $(document).ready(function(){
     const PAUSE_HTML = `<button class="pattern-item pause"><img src="../img/pause-icon.svg" alt="pause icon"></button>`;
-    const VIBRATE_HTML = `<button class="pattern-item vibrate"><img src="../img/vibration-icon.svg" alt="vibrate icon"></button>`;
     const PAUSE_ICON = `<img src="../img/pause-icon.svg" alt="pause icon">`;
     const VIBRATE_ICON = `<img src="../img/vibration-icon.svg" alt="vibrate icon">`;
 
@@ -8,6 +7,45 @@ $(document).ready(function(){
     var view = "3";
     var pattern = [];
     var sender = "a dear someone";
+
+    //create a synth and connect it to the main output
+    const notes = ["C4", "E4", "G4", "C5"];
+    const sampler = new Tone.Sampler({
+        urls: {
+            A0: "A0.mp3",
+            C1: "C1.mp3",
+            "D#1": "Ds1.mp3",
+            "F#1": "Fs1.mp3",
+            A1: "A1.mp3",
+            C2: "C2.mp3",
+            "D#2": "Ds2.mp3",
+            "F#2": "Fs2.mp3",
+            A2: "A2.mp3",
+            C3: "C3.mp3",
+            "D#3": "Ds3.mp3",
+            "F#3": "Fs3.mp3",
+            A3: "A3.mp3",
+            C4: "C4.mp3",
+            "D#4": "Ds4.mp3",
+            "F#4": "Fs4.mp3",
+            A4: "A4.mp3",
+            C5: "C5.mp3",
+            "D#5": "Ds5.mp3",
+            "F#5": "Fs5.mp3",
+            A5: "A5.mp3",
+            C6: "C6.mp3",
+            "D#6": "Ds6.mp3",
+            "F#6": "Fs6.mp3",
+            A6: "A6.mp3",
+            C7: "C7.mp3",
+            "D#7": "Ds7.mp3",
+            "F#7": "Fs7.mp3",
+            A7: "A7.mp3",
+            C8: "C8.mp3"
+        },
+        release: 1,
+        baseUrl: "https://tonejs.github.io/audio/salamander/"
+    }).toDestination();
 
     //Functions
     
@@ -127,24 +165,24 @@ $(document).ready(function(){
         return vibrationPattern;
     }
 
-    /**
-     * Creates and starts the vibration sequence
-     */
-    function play(){
-        vibrationPattern = generatePattern();
-        runSequence(vibrationPattern);
-    }
-
     //Helper function for runSequence
     const delay = ms => new Promise(resolve => {setTimeout(resolve, ms)});
 
     /**
      * Executes the vibration sequence
-     * @param {object} sequence the sequence to vibrate
      */
-    async function runSequence(sequence) {
-        //Wait before execution
+    async function runSequence() {
+        //check if sound is checked
+        let sound = $("#sound-checkbox").is(":checked") == false ? $("#sound-checkbox-preview").is(":checked") : true;
+
+        //Checking if vibrations are supported
+        if(!window.navigator.vibrate && !sound){
+            alert("Vibration is not supported on your device or browser. We are sorry for the inconvenience. Please play it with sound!");
+            throw new Error("Vibration not supported.");
+        }
+
         if($("#preview-parent").css("display") == "grid"){
+            sound = $("#sound-checkbox-preview").is(":checked");
             $("#timer span").text("1");
             $("#timer").removeClass("hidden");
             $("#timer span").addClass("animate-ping").removeClass("hidden");
@@ -156,12 +194,33 @@ $(document).ready(function(){
             $("#timer span").removeClass("animate-ping").addClass("hidden");
         }
 
-        for (const item of sequence) {
-            if(item.type == 1){
-                window.navigator.vibrate(200*item.number);
+        if(sound){
+            let currentPattern = [];
+            let playedPattern = [];
+            let iterateBy = pattern.length % 2 == 0 ? 4 : 3;
+
+            for( let i = 0; i < pattern.length; i+=iterateBy){
+                await delay(800);
+
+                currentPattern = pattern.slice(i,i+iterateBy);
+                playedPattern = [];
+
+                for(let j = 0; j < currentPattern.length; j++)
+                    currentPattern[j] == 1 ? playedPattern.push(notes[j]) : null;
+
+                sampler.triggerAttackRelease(playedPattern, 0.8);
             }
-            await delay(200*item.number);
         }
+        else{
+            let sequence = generatePattern();
+            for (const item of sequence) {
+                if(item.type == 1){
+                    window.navigator.vibrate(200*item.number);
+                }
+                await delay(200*item.number);
+            }
+        }
+
         $("#timer").addClass("hidden");
     }
 
@@ -214,7 +273,7 @@ $(document).ready(function(){
               "Content-Type": "application/json"
             },
             "data": JSON.stringify({
-                "pattern": generatePattern(),
+                "pattern": pattern,
                 "name": sender.length == 0 ? "a dear someone" : sender
             }),
           };
@@ -267,13 +326,13 @@ $(document).ready(function(){
     //Listeners
     $("#view").click(changeView);
     $("#clear").click(clearPattern);
-    $("#play").click(play);
+    $("#play").click(runSequence);
     $("#stop").click(stop);
     $(".preview").click(preview);
     $(".back-btn").click(back);
     $("#send-btn").click(send);
     $("#share-btn").click(share);
-    $("body").on("click","#play-hug", play);
+    $("body").on("click","#play-hug", runSequence);
     $('body').on('focus', '[contenteditable]', changeName).on('blur keyup paste input', '[contenteditable]', changeName);
     $("#pattern").on("click",".pattern-item",changeType);
 });
