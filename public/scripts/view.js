@@ -175,7 +175,7 @@ $(document).ready(function(){
         
         if(plays != 3){
             await $.ajax(settings).done(function (response) {
-                plays = response.plays;
+                plays = response.plays != undefined ? response.plays : 3;
                 $("#plays-left").text(plays == 3 ? "You can't play the hug anymore." : 3-plays + " plays left");
                 if(plays == 3) {
                     $("#play-hug").html(`Send a new hug <img class="inline-block ml-2" src="../img/heart-icon.svg" alt="heart icon">`);
