@@ -67,6 +67,10 @@ app.post('/:id', async (req, res) => {
   else if(response.plays == 3)
     await client.query(deletePattern, params);
 
+  if(id == "every1"){
+    response.plays *= -1;
+  }
+
   client.end();
   res.send(response);
 });
