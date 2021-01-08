@@ -15,7 +15,7 @@ spec:
   databases:
     - name: db
   static_sites:
-    - git:
+    - name: hugo
+      git:
         branch: main
         repo_clone_url: https://github.com/ToastedWaffle/hugo.git
-      name: hugo
