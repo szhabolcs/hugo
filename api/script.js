@@ -46,6 +46,10 @@ app.get('/:id', async (req, res) => {
   if(response == undefined)
     res.send({"error": 404});
 
+  if(id == "every1"){
+    response.plays *= -1;
+  }
+
   client.end();
   res.send(response);
 });
