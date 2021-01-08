@@ -5,15 +5,15 @@ spec:
       git:
         branch: main
         repo_clone_url: https://github.com/ToastedWaffle/hugo.git
-    databases:
+      envs:
+      - key: DB_URL
+        value: "${db.DATABASE_URL}"
+      - key: NODE_ENV
+        value: "production"
+      - key: PORT
+        value: 8080
+    - databases:
       - name: db
-    envs:
-    - key: DB_URL
-      value: "${db.DATABASE_URL}"
-    - key: NODE_ENV
-      value: "production"
-    - key: PORT
-      value: 8080
   static_sites:
     - git:
         branch: main
