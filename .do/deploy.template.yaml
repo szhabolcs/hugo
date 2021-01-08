@@ -5,17 +5,20 @@ spec:
       git:
         branch: main
         repo_clone_url: https://github.com/ToastedWaffle/hugo.git
+      run_command: "node api/script.js"
       envs:
       - key: DB_URL
         value: "${db.DATABASE_URL}"
       - key: NODE_ENV
         value: "production"
       - key: PORT
-        value: 8080
-  databases:
-    - name: db
+        value: "8080"
   static_sites:
     - name: hugo
       git:
         branch: main
         repo_clone_url: https://github.com/ToastedWaffle/hugo.git
+      build_command: "npm run build-css-prod"
+  databases:
+    - name: db
+      engine: PG
