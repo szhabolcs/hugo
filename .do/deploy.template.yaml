@@ -12,8 +12,8 @@ spec:
         value: "production"
       - key: PORT
         value: 8080
-    databases:
-      - name: db
+  databases:
+    - name: db
   static_sites:
     - git:
         branch: main
