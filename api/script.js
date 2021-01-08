@@ -15,6 +15,7 @@ const connectionString = process.env.DB_URL;
 
 const getPattern = 'SELECT * FROM hugo WHERE id = $1';
 const incrementPatternPlays = 'UPDATE hugo SET plays=plays+1 WHERE id = $1 RETURNING plays';
+const incrementStats = 'UPDATE stats SET sent=sent+1';
 const deletePattern = 'DELETE FROM hugo WHERE id = $1';
 const addPattern = 'INSERT INTO hugo(id,pattern,name,plays) VALUES ($1,$2::JSONB,$3,$4)';
 var response;
@@ -94,6 +95,8 @@ app.post('/', async (req, res) => {
     }
   }
   
+  await client.query(incrementStats);
+
   client.end();
   res.send(response);
 });
