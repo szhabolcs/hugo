@@ -110,6 +110,53 @@ $(document).ready(function(){
     //Helper function for runSequence
     const delay = ms => new Promise(resolve => {setTimeout(resolve, ms)});
 
+        /**
+     * Executes the vibration sequence
+     */
+    async function runSequence() {
+        //check if sound is checked
+        let sound = $("#sound-checkbox").is(":checked");
+
+        $("#timer span").text("1");
+        $("#timer").removeClass("hidden");
+        $("#timer span").addClass("animate-ping").removeClass("hidden");
+        await delay(980);
+        $("#timer span").text("2");
+        await delay(980);
+        $("#timer span").text("3");
+        await delay(1000);
+        $("#timer span").removeClass("animate-ping").addClass("hidden");
+
+        if(sound){
+            let currentPattern = [];
+            let playedPattern = [];
+            let iterateBy = pattern.length % 2 == 0 ? 4 : 3;
+
+            for( let i = 0; i < pattern.length; i+=iterateBy){
+                await delay(800);
+
+                currentPattern = pattern.slice(i,i+iterateBy);
+                playedPattern = [];
+
+                for(let j = 0; j < currentPattern.length; j++)
+                    currentPattern[j] == 1 ? playedPattern.push(notes[j]) : null;
+
+                sampler.triggerAttackRelease(playedPattern, 0.8);
+            }
+        }
+        else{
+            let sequence = generatePattern();
+            for (const item of sequence) {
+                if(item.type == 1){
+                    window.navigator.vibrate(200*item.number);
+                }
+                await delay(200*item.number);
+            }
+        }
+        await delay(800);
+    $("#timer").addClass("hidden");
+}
+
     /**
      * Creates and starts the vibration sequence
      */
@@ -135,46 +182,7 @@ $(document).ready(function(){
                     $("#new-hug-btn").remove();
                 }
             });
-            //Moved runSequence here
-
-            $("#timer span").text("1");
-            $("#timer").removeClass("hidden");
-            $("#timer span").addClass("animate-ping").removeClass("hidden");
-            await delay(980);
-            $("#timer span").text("2");
-            await delay(980);
-            $("#timer span").text("3");
-            await delay(1000);
-            $("#timer span").removeClass("animate-ping").addClass("hidden");
-
-            if(sound){
-                let currentPattern = [];
-                let playedPattern = [];
-                let iterateBy = pattern.length % 2 == 0 ? 4 : 3;
-
-                for( let i = 0; i < pattern.length; i+=iterateBy){
-                    await delay(800);
-
-                    currentPattern = pattern.slice(i,i+iterateBy);
-                    playedPattern = [];
-
-                    for(let j = 0; j < currentPattern.length; j++)
-                        currentPattern[j] == 1 ? playedPattern.push(notes[j]) : null;
-
-                    sampler.triggerAttackRelease(playedPattern, 0.8);
-                }
-            }
-            else{
-                let sequence = generatePattern();
-                for (const item of sequence) {
-                    if(item.type == 1){
-                        window.navigator.vibrate(200*item.number);
-                    }
-                    await delay(200*item.number);
-                }
-            }
-            await delay(800);
-            $("#timer").addClass("hidden");
+            runSequence();
         }
         else if(plays == 3){
             window.open("https://hugo-ptrq2.ondigitalocean.app/send","_self");
