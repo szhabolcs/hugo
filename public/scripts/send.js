@@ -173,7 +173,11 @@ $(document).ready(function(){
      */
     async function runSequence() {
         //check if sound is checked
-        let sound = $("#sound-checkbox").is(":checked") == false ? $("#sound-checkbox-preview").is(":checked") : true;
+        let sound = $("#sound-checkbox").is(":checked");
+
+        if($("#preview-parent").css("display") == "grid"){
+            sound = $("#sound-checkbox-preview").is(":checked");
+        }
 
         //Checking if vibrations are supported
         if(!window.navigator.vibrate && !sound){
