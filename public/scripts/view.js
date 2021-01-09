@@ -134,6 +134,7 @@ $(document).ready(function(){
 
             for( let i = 0; i < pattern.length; i+=iterateBy){
                 await delay(800);
+                sampler.context.resume();
 
                 currentPattern = pattern.slice(i,i+iterateBy);
                 playedPattern = [];
