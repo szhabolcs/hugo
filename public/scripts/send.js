@@ -172,6 +172,7 @@ $(document).ready(function(){
      * Executes the vibration sequence
      */
     async function runSequence() {
+        Tone.start();
         //check if sound is checked
         let sound = $("#sound-checkbox").is(":checked");
 
