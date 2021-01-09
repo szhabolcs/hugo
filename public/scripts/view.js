@@ -134,7 +134,6 @@ $(document).ready(function(){
 
             for( let i = 0; i < pattern.length; i+=iterateBy){
                 await delay(800);
-                sampler.context.resume();
 
                 currentPattern = pattern.slice(i,i+iterateBy);
                 playedPattern = [];
@@ -162,6 +161,7 @@ $(document).ready(function(){
      * Creates and starts the vibration sequence
      */
     async function play(){
+        Tone.start();
         let sound = $("#sound-checkbox").is(":checked");
 
         if(!window.navigator.vibrate && !sound){
