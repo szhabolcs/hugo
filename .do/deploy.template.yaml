@@ -2,6 +2,8 @@ spec:
   name: hugo
   services:
     - name: api
+      routes:
+        - path: "/api"
       git:
         branch: main
         repo_clone_url: https://github.com/ToastedWaffle/hugo.git
