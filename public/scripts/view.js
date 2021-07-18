@@ -58,7 +58,7 @@ $(document).ready(function(){
 
     async function fetchPattern(){
         var settings = {
-            "url": `https://hugo-ptrq2.ondigitalocean.app/api/${id}`,
+            "url": `https://hugo.deta.dev/${id}`,
             "method": "GET"
           };
           

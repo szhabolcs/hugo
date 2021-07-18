@@ -287,7 +287,7 @@ $(document).ready(function(){
             // id is response.id
             $("#link-parent").css("display","flex");
 
-            $("#link").text(`https://hugo-ptrq2.ondigitalocean.app/view?id=${response.id}`);
+            $("#link").text(`https://hugo-ptrq2.ondigitalocean.app/view?id=${response.key}`);
     
             if (!navigator.share)
                 $("#share-btn").text("Copy link");
