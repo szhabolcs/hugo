@@ -65,7 +65,7 @@ $(document).ready(function(){
         await $.ajax(settings).done(function (response) {
             if(!response.hasOwnProperty("error")){
                 $("#sender-name").text(response.name);
-                pattern = response.pattern["pattern"];
+                pattern = response.pattern;
                 plays = response.plays;
                 $("#plays-left").text(`${3-plays} plays left`);
             }

@@ -57,9 +57,10 @@ app.post('/:id', async (req, res) => {
 // insert new pattern
 app.post('/', async (req, res) => {
 
-    const { name, pattern } = req.body;
-    const toCreate = { name, pattern };
-    const insertedUser = await db.put(toCreate); // put() will autogenerate a key for us
+    const { name, pattern, plays } = req.body;
+    const toCreate = { name, pattern, plays };
+    toCreate.plays = 0;
+    const insertedUser = await db.put(toCreate);
     
     res.status(201).json(insertedUser);
 });
