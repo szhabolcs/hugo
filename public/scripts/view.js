@@ -49,7 +49,7 @@ $(document).ready(function(){
         $("body").addClass("grid h-screen grid-cols-1 content-center");
         $("#content").html(`
             <h1 class="font-header text-5xl text-center">No hug found</h1>
-            <button id="new-hug-btn" class="btn back-btn mx-auto mt-10 bg-secondary text-primary text-lg" onclick='window.open("https:\/\/hugo-ptrq2.ondigitalocean.app\/send","_self");'>But you can send a new one!</button>
+            <button id="new-hug-btn" class="btn back-btn mx-auto mt-10 bg-secondary text-primary text-lg" onclick='window.open("https:\/\/hugoapp.netlify.app\/send","_self");'>But you can send a new one!</button>
         `);
     }
     else{
@@ -73,7 +73,7 @@ $(document).ready(function(){
                 $("body").addClass("grid h-screen grid-cols-1 content-center");
                 $("#content").html(`
                     <h1 class="font-header text-5xl text-center">No hug found</h1>
-                    <button id="new-hug-btn" class="btn back-btn mx-auto mt-10 bg-secondary text-primary text-lg" onclick='window.open("https:\/\/hugo-ptrq2.ondigitalocean.app\/send","_self");'>But you can send a new one!</button>
+                    <button id="new-hug-btn" class="btn back-btn mx-auto mt-10 bg-secondary text-primary text-lg" onclick='window.open("https:\/\/hugoapp.netlify.app\/send","_self");'>But you can send a new one!</button>
                 `);
             }
         });
@@ -170,7 +170,7 @@ $(document).ready(function(){
         }
 
         var settings = {
-            "url": `https://hugo-ptrq2.ondigitalocean.app/api/${id}`,
+            "url": `https://hugo.deta.dev/${id}`,
             "method": "POST"
           };
         
@@ -186,7 +186,7 @@ $(document).ready(function(){
             runSequence();
         }
         else if(plays == 3){
-            window.open("https://hugo-ptrq2.ondigitalocean.app/send","_self");
+            window.open("https://hugoapp.netlify.app/send","_self");
         }
     }
 
