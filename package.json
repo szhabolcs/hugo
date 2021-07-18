@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-css": "npx tailwindcss build src/styles.css -o public/styles.css",
-    "build-css-prod": "cross-env NODE_ENV=production npx tailwindcss build src/styles.css -o public/styles.css"
+    "build-css": "npx tailwindcss build -i src/styles.css -o public/styles.css",
+    "build-css-prod": "cross-env NODE_ENV=production npx tailwindcss build -i src/styles.css -o public/styles.css"
   },
   "repository": {
     "type": "git",
