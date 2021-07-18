@@ -16,13 +16,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const port = process.env.PORT || 3000;
 
-const getPattern = 'SELECT * FROM hugo WHERE id = $1';
-const incrementPatternPlays = 'UPDATE hugo SET plays=plays+1 WHERE id = $1 RETURNING plays';
-const incrementStats = 'UPDATE stats SET sent=sent+1';
-const deletePattern = 'DELETE FROM hugo WHERE id = $1';
-const addPattern = 'INSERT INTO hugo(id,pattern,name,plays) VALUES ($1,$2::JSONB,$3,$4)';
-var response;
-
 // request pattern
 app.get('/:id', async (req, res) => {
     const { id } = req.params;

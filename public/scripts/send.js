@@ -271,7 +271,7 @@ $(document).ready(function(){
      */
     function send(){
         var settings = {
-            "url": "https://hugo-ptrq2.ondigitalocean.app/api/",
+            "url": "https://hugo.deta.dev",
             "method": "POST",
             "timeout": 0,
             "headers": {
