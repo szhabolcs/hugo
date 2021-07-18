@@ -39,10 +39,9 @@ app.post('/:id', async (req, res) => {
 
     if (hug.plays == 3) {  //delete hug
         await db.delete(id);
-        res.send({plays: hug.plays});
-    } else {    //hug not found
-        res.send({ "error": 404 });
     }
+
+    res.send({plays: hug.plays});
 
     // const client = new Client({
     //     connectionString
