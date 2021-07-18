@@ -30,6 +30,19 @@ app.get('/:id', async (req, res) => {
 
 // increment pattern plays
 app.post('/:id', async (req, res) => {
+    const { id } = req.params;
+    const toUpdate = { plays: db.util.increment() };
+    
+    const updateStatus = await db.update(toUpdate, id);
+
+    const hug = await db.get(id);
+
+    if (hug.plays == 3) {  //delete hug
+        await db.delete(id);
+    } else {    //hug not found
+        res.send({ "error": 404 });
+    }
+
     // const client = new Client({
     //     connectionString
     // });
